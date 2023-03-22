@@ -1,0 +1,111 @@
+<div *ngIf="!isDelete">
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+  <h1 mat-dialog-title>{{ title }}</h1>
+  <div mat-dialog-content>
+    <form
+      class="example-form"
+      name="model"
+      #form="ngForm"
+      (ngSubmit)="form.form.valid && onSubmit()"
+      novalidate
+    >
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="model.name"
+          required
+          #name="ngModel"
+          [ngClass]="{ 'is-invalid': form.submitted && name.errors }"
+        />
+        <div *ngIf="model.submitted && name.errors" class="invalid-feedback">
+          <div *ngIf="model.errors['required']">Name is required</div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="description"
+          [(ngModel)]="model.description"
+          required
+          #description="ngModel"
+          [ngClass]="{ 'is-invalid': model.submitted && description.errors }"
+        />
+        <div
+          *ngIf="model.submitted && description.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="description.errors['required']">
+            Description is required
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Link</mat-label>
+        <input
+          matInput
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="model.link"
+          required
+          link
+          #link="ngModel"
+          [ngClass]="{ 'is-invalid': model.submitted && model.errors }"
+        />
+        <div *ngIf="model.submitted && link.errors" class="invalid-feedback">
+          <div *ngIf="link.errors['required']">Link is required</div>
+        </div>
+      </mat-form-field>
+
+      <div class="form-group">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button
+          type="button"
+          (click)="onReset(model)"
+          mat-raised-button
+          color="accent"
+        >
+          Reset
+        </button>
+
+        <button
+          type="button"
+          (click)="onClose()"
+          mat-raised-button
+          color="black"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isDelete">
+  <mat-dialog-content>
+    <p>
+      {{ deleteMessage }}
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onConfirmClick()"
+      tabindex="1"
+    >
+      Yes
+    </button>
+    <button mat-raised-button mat-dialog-close tabindex="-1">No</button>
+  </mat-dialog-actions>
+</div>

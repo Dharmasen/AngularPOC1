@@ -1,0 +1,52 @@
+<button mat-raised-button color="primary" (click)="createDialog()">
+  Add User
+</button>
+
+<table mat-table [dataSource]="usersList" class="mat-elevation-z8">
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="editDialog(element.id, element)"
+      >
+        Edit
+      </button>
+      &nbsp;
+      <button mat-raised-button color="warn" (click)="deleteDialog(element.id)">
+        Delete
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<a class="nav-link color" routerLinkActive="active" [routerLink]="['./profile']"
+  >Admin Profile</a
+>
+
+<a
+  class="nav-link color"
+  routerLinkActive="active"
+  [routerLink]="['./admin-list']"
+  >Admin List</a
+>
+
+<router-outlet></router-outlet>

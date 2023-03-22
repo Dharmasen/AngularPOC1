@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Dharmasen",
+      "lastName": "yadav",
+      "email": "mdyadav.sm@gmail.com",
+      "password": "1234"
+    },
+    {
+      "firstName": "Ganesh",
+      "lastName": "yadav",
+      "email": "ganesh@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "firstName": "Rahul",
+      "lastName": "khan",
+      "email": "rahul@gmail.com",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "firstName": "Mahasvin",
+      "lastName": "babu",
+      "email": "maha@gmail.com",
+      "password": "123456",
+      "id": 4
+    },
+    {
+      "firstName": "venkat",
+      "lastName": "velati",
+      "email": "vv@gmail.com",
+      "password": "1234",
+      "id": 5
+    }
+  ],
+  "employees": [
+    {
+      "id": 101,
+      "name": "Rahul",
+      "Department": "Civil"
+    },
+    {
+      "id": 102,
+      "name": "virat",
+      "Department": "Computer"
+    }
+  ],
+  "important_links": [
+    {
+      "name": "Ng data sharing",
+      "description": "Angular data sharing using service unrelated compoent",
+      "link": "https://stackblitz.com/edit/angular-data-sharing-between-two-components?file=src%2Fapp%2Fapp.component.ts",
+      "id": 1
+    },
+    {
+      "name": "Ng Material icons",
+      "description": "Angular material icons ",
+      "link": "https://jossef.github.io/material-design-icons-iconfont/",
+      "id": 2
+    }
+  ]
+}

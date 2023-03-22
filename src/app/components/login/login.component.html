@@ -1,0 +1,64 @@
+<div class="card" style="width: 600px">
+  <h4 class="card-header">Login</h4>
+  <div class="card-body">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="formGroup">
+        <label class="form-label">Email</label>
+        <input
+          type="text"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && loginFormData['email'].errors
+          }"
+        />
+
+        <div
+          *ngIf="submitted && loginFormData['email'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="loginFormData['email'].errors['required']">
+            Email is required
+          </div>
+          <div *ngIf="loginFormData['email'].errors['email']">
+            Email address is invalid
+          </div>
+        </div>
+      </div>
+
+      <div class="formGroup">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && loginFormData['password'].errors
+          }"
+        />
+        <div
+          *ngIf="submitted && loginFormData['password'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="loginFormData['password'].errors['required']">
+            Password is required
+          </div>
+          <div *ngIf="loginFormData['password'].errors['minlength']">
+            Password must be at least 4 characters
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div>
+        <button class="btn btn-primary">Login</button>&nbsp;
+        <button
+          class="btn btn-warning margin-2"
+          (click)="onClickRegistration()"
+        >
+          Registration
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

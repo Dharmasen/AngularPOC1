@@ -1,0 +1,140 @@
+<div *ngIf="!isDelete">
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+  <h1 mat-dialog-title>{{ title }}</h1>
+  <div mat-dialog-content>
+    <form
+      class="example-form"
+      name="signupModel"
+      #signupForm="ngForm"
+      (ngSubmit)="signupForm.form.valid && onSubmit()"
+      novalidate
+    >
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="signupModel.firstName"
+          required
+          #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': signupForm.submitted && firstName.errors }"
+        />
+        <div
+          *ngIf="signupForm.submitted && firstName.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="firstName.errors['required']">FirstName is required</div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="signupModel.lastName"
+          required
+          #lastName="ngModel"
+          [ngClass]="{ 'is-invalid': signupForm.submitted && lastName.errors }"
+        />
+        <div
+          *ngIf="signupForm.submitted && lastName.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="lastName.errors['required']">Last Name is required</div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="signupModel.email"
+          required
+          email
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': signupForm.submitted && email.errors }"
+        />
+        <div
+          *ngIf="signupForm.submitted && email.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['email']">Email is invalid</div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="signupModel.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': signupForm.submitted && password.errors }"
+        />
+        <div
+          *ngIf="signupForm.submitted && password.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </mat-form-field>
+
+      <div class="form-group">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button
+          type="button"
+          (click)="onReset(signupForm)"
+          mat-raised-button
+          color="accent"
+        >
+          Reset
+        </button>
+
+        <button
+          type="button"
+          (click)="onClose()"
+          mat-raised-button
+          color="black"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isDelete">
+  <mat-dialog-content>
+    <p>
+      {{ deleteMessage }}
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onConfirmClick()"
+      tabindex="1"
+    >
+      Yes
+    </button>
+    <button mat-raised-button mat-dialog-close tabindex="-1">No</button>
+  </mat-dialog-actions>
+</div>

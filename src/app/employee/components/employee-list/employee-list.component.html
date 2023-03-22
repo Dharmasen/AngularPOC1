@@ -1,0 +1,55 @@
+<button mat-raised-button color="primary" (click)="addLink()">Add Link</button>
+
+<table mat-table [dataSource]="linkList" class="mat-elevation-z8">
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-mini-fab
+        color="accent"
+        aria-label="Example icon button with a menu icon"
+        (click)="editLink(element.id, element)"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      &nbsp;
+
+      <button
+        mat-mini-fab
+        color="warn"
+        aria-label="Example icon button with a menu icon"
+        (click)="deleteLink(element.id)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      &nbsp;
+
+      <a
+        mat-raised-button
+        href="{{ element.link }}"
+        target="_blank"
+        style="background-color: rgb(40, 218, 30); color: white"
+      >
+        <mat-icon>ads_click</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
