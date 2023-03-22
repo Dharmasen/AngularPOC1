@@ -26,15 +26,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-# =====================================================================================================
+# ==============================================================================
 
 To Run the mock-server
 
 1. first navigate to server folder
 2. open cmd and type command --> json-server --watch db.json
-3. For more info follow --> https://www.npmjs.com/package/json-server
+3. check the http://localhost:3000
+4. For more info follow --> https://www.npmjs.com/package/json-server
 
 To run the app
-ng serve -o
 
-==================================================================================================
+1. ng serve -o
+2. then check --> http://localhost:5000/
+
+=====================================================================================
